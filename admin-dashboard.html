@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id" data-tema="gelap">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dashboard Admin - Aura Karaoke</title>
+<script>try{document.documentElement.dataset.tema=localStorage.getItem('aura2_tema')||'gelap'}catch(e){}</script>
+<link rel="stylesheet" href="../Css/style.css">
+</head>
+<body data-hal="a-dash">
+
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="logo-dot"></span>Aura&nbsp;<b>Karaoke</b></a>
+  <nav class="tabs" aria-label="Menu utama">
+    <a href="index.html" data-hal="beranda" data-utk="tamu,customer">Beranda</a>
+    <a href="ruangan.html" data-hal="ruangan" data-utk="tamu,customer">Ruangan</a>
+    <a href="dashboard.html" data-hal="dashboard" data-utk="customer">Dashboard</a>
+    <a href="pesan-ruangan.html" data-hal="pesan" data-utk="customer">Pesan</a>
+    <a href="riwayat.html" data-hal="riwayat" data-utk="customer">Riwayat</a>
+    <a href="admin-dashboard.html" data-hal="a-dash" data-utk="admin">Panel</a>
+    <a href="admin-ruangan.html" data-hal="a-ruangan" data-utk="admin">Ruangan</a>
+    <a href="admin-pemesanan.html" data-hal="a-pemesanan" data-utk="admin">Pemesanan</a>
+    <a href="admin-verifikasi.html" data-hal="a-verifikasi" data-utk="admin">Verifikasi<span class="cnt" id="cntBayar" hidden></span></a>
+  </nav>
+  <div class="bar-aksi">
+    <button type="button" class="ikon-btn" id="btnTema" aria-label="Ganti tema terang atau gelap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+    <div id="notifWrap" hidden>
+      <button type="button" class="ikon-btn" id="btnNotif" aria-label="Notifikasi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg><span class="notif-jml" id="notifCount" hidden></span></button>
+      <div class="notif-panel" id="notifPanel" hidden><h4>Notifikasi</h4><ul id="notifList"></ul></div>
+    </div>
+    <span id="areaTamu"><a class="btn ghost sm" href="pilih.html#masuk">Masuk</a><a class="btn sm" href="pilih.html#daftar">Daftar</a></span>
+    <span id="areaUser" hidden><span id="namaUser"></span><button type="button" class="btn ghost sm" id="btnKeluar">Keluar</button></span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="kepala-hal"><div><span class="label">Panel admin</span><h1 style="font-size:2.1rem">Ringkasan hari ini</h1></div><a class="btn" href="admin-verifikasi.html">Buka antrean verifikasi</a></div>
+  <div class="stats">
+    <div class="stat"><b id="aPendapatan">Rp0</b><span>Pendapatan 7 hari terakhir</span></div>
+    <div class="stat"><b id="aHariIni">0</b><span>Pemesanan hari ini</span></div>
+    <div class="stat"><b id="aMV">0</b><span>Menunggu verifikasi</span></div>
+    <div class="stat"><b id="aOkupansi">0%</b><span>Okupansi hari ini</span></div>
+  </div>
+  <div class="dua-kolom">
+    <div class="card"><h3>Pendapatan 7 hari terakhir</h3><div class="grafik" id="grafik"></div></div>
+    <div class="card"><h3>Okupansi per ruangan (hari ini)</h3><div id="okupansiRuang"></div></div>
+  </div>
+  <div class="card" style="margin-top:1.1rem"><h3>Perlu diverifikasi</h3><ul class="lis" id="antrian"></ul><p id="linkAntrian" hidden><a href="admin-verifikasi.html">Lihat semua &rarr;</a></p></div>
+</div>
+
+<footer class="kaki">Aura Karaoke &middot; Buka setiap hari <span id="jamBuka">10.00 sampai 23.00</span> &middot; Jl. Contoh No. 1, Jakarta &middot; 021-0000-0000</footer>
+<div class="modal" id="modal" hidden><div class="modal-box" role="dialog" aria-modal="true"><button type="button" class="x" data-tutup aria-label="Tutup">&times;</button><div id="modalIsi"></div></div></div>
+<div id="toast" role="status"></div>
+
+<script src="../Js/script.js"></script>
+<script>
+  initAdminDashboard();
+</script>
+</body>
+</html>
